@@ -19,11 +19,11 @@ source "$fasd_cache"
 unset fasd_cache
 
 function getprompt {
-	local HOST TIME HISTORY WHOAMI PROMPT WHEREAMI OLDSTATUS;
+    local HOST TIME HISTORY WHOAMI PROMPT WHEREAMI OLDSTATUS;
 
-	OLDSTATUS=$?;
+    OLDSTATUS=$?;
 
-	eval $(direnv export bash);
+    eval $(direnv export bash);
 
     if [ "$?" -eq 0 -o "$?" -eq 1 ]; then #1 == ctrl-c
             PColor="🍺 "
@@ -45,7 +45,7 @@ function getprompt {
 
     export PS1="\n    $TIME ⎦${WHEREAMI}⎡ \n ${HISTORY} $PROMPT"
 
-	return $OLDSTATUS;
+    return $OLDSTATUS;
 }
 
 export PROMPT_COMMAND="history -a; getprompt"
