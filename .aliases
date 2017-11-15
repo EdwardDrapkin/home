@@ -1,0 +1,33 @@
+alias ll='ls -lhAG'
+alias ls='exa'
+alias nid="npm i --save-dev"
+alias nis="npm i --save"
+alias nu="npm update"
+alias myscary="mysql -uroot -h 127.0.0.1"
+alias killbabels="ps | grep babel | grep -v grep | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1 | xargs kill"
+
+function cr {
+	src=$1
+	dest=$2
+	rsync --no-i-r --info=progress2 -a --stats --human-readable $src $dest
+}
+
+function fuckdocker {
+	killall -9 docker-compose
+	docker stop $( docker ps -a -q )
+	docker rm $( docker ps -a -q )
+}
+
+function fuckdockerhard {
+	fuckdocker
+	docker rmi $( docker images -a -q )
+}
+
+function reallyfuckdocker {
+	fuckdockerhard
+	 rm ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/Docker.qcow2
+}
+
+function dstats {
+	docker stats --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.MemPerc}}\t{{.NetIO}}\t{{.BlockIO}}"
+}

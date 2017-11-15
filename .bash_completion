@@ -1,0 +1,49 @@
+PROJECTS_DIR=~/projects
+
+proj() {
+        cd ${PROJECTS_DIR}/$1
+}
+
+krak() {
+        cd ${PROJECTS_DIR}/kraken-$1
+}
+
+hapi() {
+	cd ${PROJECTS_DIR}/hapi-$1
+}
+
+worker() {
+	cd ${PROJECTS_DIR}/worker-$1
+}
+
+_complete_proj() {
+        cur="${COMP_WORDS[COMP_CWORD]}"
+        opts=$( find -X ${PROJECTS_DIR} -name ${cur}* -maxdepth 1 -type d -prune  | xargs basename )
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0;
+}
+
+_complete_prefix() {
+	local prefix="$1"
+	local cur="${COMP_WORDS[COMP_CWORD]}"
+        local opts=$( find -X ${PROJECTS_DIR} -name ${prefix}-${cur}* -maxdepth 1 -type d -prune  | xargs basename | sed "s/${prefix}-//" )
+        COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+        return 0;
+}
+
+_complete_kraken() {
+	_complete_prefix kraken;
+}
+
+_complete_hapi() {
+	_complete_prefix hapi;
+}
+
+_complete_worker() {
+	_complete_prefix worker;
+}
+
+complete -F _complete_proj proj
+complete -F _complete_kraken krak
+complete -F _complete_hapi hapi
+complete -F _complete_worker worker
