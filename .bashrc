@@ -11,13 +11,6 @@ export HISTFILESIZE=100000               # big big history
 
 eval $( keychain --eval --agents ssh --inherit any id_rsa id_ed25519 )
 
-fasd_cache="$HOME/.fasd-init-bash"
-if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
-fi
-source "$fasd_cache"
-unset fasd_cache
-
 function getprompt {
     local HOST TIME HISTORY WHOAMI PROMPT WHEREAMI OLDSTATUS;
 
@@ -49,4 +42,11 @@ function getprompt {
 }
 
 export PROMPT_COMMAND="history -a; getprompt"
+
+fasd_cache="$HOME/.fasd-init-bash"
+if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
+  fasd --init posix-alias bash-hook bash-ccomp bash-ccomp-install >| "$fasd_cache"
+fi
+source "$fasd_cache"
+unset fasd_cache
 
