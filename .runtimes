@@ -1,5 +1,5 @@
 # Node
-[ -s "$NVS_HOME/nvs.sh" ] && export NVS_HOME="$HOME/.nvs" && . "$NVS_HOME/nvs.sh"
+[ -s "$HOME/.nvs/nvs.sh" ] && export NVS_HOME="$HOME/.nvs" && . "$NVS_HOME/nvs.sh"
 
 # Java
 [ -s "$HOME/.jabba/jabba.sh" ] && . ~/.jabba/jabba.sh
