@@ -10,3 +10,8 @@ command -v go && export GOPATH=~/go
 # OCaml
 command -v opam && eval $( opam config env )
 
+# Rust
+. $HOME/.cargo/env
+
+# Android
+export ANDROID_HOME=$HOME/Android/sdk
