@@ -21,6 +21,15 @@ BPurple='\[\e[1;35m\]'      # Purple
 BCyan='\[\e[1;36m\]'        # Cyan
 BWhite='\[\e[1;37m\]'       # White
 
+#Dim
+DRed='\[\e[2;31m\]'
+DGreen='\[\e[2;32m\]'
+DYellow='\[\e[2;33m\]'
+DBlue='\[\e[2;34m\]'
+DPurple='\[\e[2;35m\]'
+DCyan='\[\e[2;36m\]'
+DWhite='\[\e[2;37m\]'
+
 # Underline
 UBlack='\[\e[4;30m\]'       # Black
 URed='\[\e[4;31m\]'         # Red

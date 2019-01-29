@@ -2,7 +2,7 @@
 [ -s "$HOME/.nvs/nvs.sh" ] && export NVS_HOME="$HOME/.nvs" && . "$NVS_HOME/nvs.sh"
 
 # Java
-[ -s "$HOME/.jabba/jabba.sh" ] && . ~/.jabba/jabba.sh
+[ -s "$HOME/.jabba/jabba.sh" ] && . ~/.jabba/jabba.sh && jabba use zulu@1.8
 
 # Go
 command -v go && export GOPATH=~/go
@@ -15,3 +15,4 @@ command -v opam && eval $( opam config env )
 
 # Android
 export ANDROID_HOME=$HOME/Android/sdk
+export PATH="${PATH}:${ANDROID_HOME}/platform-tools/"

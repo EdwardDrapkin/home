@@ -1,10 +1,15 @@
 alias ll='ls -lhAG'
-alias ls='exa'
+#alias ls='exa'
+alias ls='exa --group-directories-first  --git -lbh'
 alias nid="npm i --save-dev"
 alias nis="npm i --save"
 alias nu="npm update"
 alias myscary="mysql -uroot -h 127.0.0.1"
 alias killbabels="ps | grep babel | grep -v grep | sed -e 's/^[[:space:]]*//' | cut -d ' ' -f1 | xargs kill"
+
+function jurl {
+	curl -H "accept: application/json" -H "Content-Type: application/json" "$@"
+}
 
 function cr {
 	src=$1
